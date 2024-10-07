@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import java.awt.Font;
@@ -18,13 +19,16 @@ import javax.swing.JPasswordField;
 import javax.swing.JFormattedTextField;
 import javax.swing.JSeparator;
 import java.awt.Button;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class PruebaSwing extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField IngreseUsuario;
-	private JTextField IngreseSuContrasea;
+	private JTextField ingreseUsuario;
+	private JPasswordField contraseñaLogin;
+	private Button botonLogin;
 
 	/**
 	 * Launch the application.
@@ -83,33 +87,59 @@ public class PruebaSwing extends JFrame {
 		usuario.setBounds(316, 114, 51, 14);
 		contentPane.add(usuario);
 		
-		IngreseUsuario = new JTextField();
-		IngreseUsuario.setHorizontalAlignment(SwingConstants.CENTER);
-		IngreseUsuario.setFont(new Font("Yu Gothic", Font.PLAIN, 11));
-		IngreseUsuario.setText("Ingrese su nombre de usuario");
-		IngreseUsuario.setForeground(new Color(128, 128, 128));
-		IngreseUsuario.setBounds(264, 139, 160, 20);
-		contentPane.add(IngreseUsuario);
-		IngreseUsuario.setColumns(10);
+		ingreseUsuario = new JTextField();
+		ingreseUsuario.setHorizontalAlignment(SwingConstants.CENTER);
+		ingreseUsuario.setFont(new Font("Yu Gothic", Font.PLAIN, 11));
+		ingreseUsuario.setText("Ingrese su nombre de usuario");
+		ingreseUsuario.setForeground(new Color(128, 128, 128));
+		ingreseUsuario.setBounds(264, 139, 160, 20);
+		contentPane.add(ingreseUsuario);
+		ingreseUsuario.setColumns(10);
 		
 		JLabel contraseña = new JLabel("CONTRASEÑA");
 		contraseña.setFont(new Font("Yu Gothic", Font.BOLD, 11));
 		contraseña.setBounds(305, 170, 79, 20);
 		contentPane.add(contraseña);
 		
-		IngreseSuContrasea = new JTextField();
-		IngreseSuContrasea.setText("Ingrese su contraseña");
-		IngreseSuContrasea.setHorizontalAlignment(SwingConstants.CENTER);
-		IngreseSuContrasea.setForeground(Color.GRAY);
-		IngreseSuContrasea.setFont(new Font("Yu Gothic", Font.PLAIN, 11));
-		IngreseSuContrasea.setColumns(10);
-		IngreseSuContrasea.setBounds(264, 201, 160, 20);
-		contentPane.add(IngreseSuContrasea);
-		
-		Button botonLogin = new Button("Entrar");
+		botonLogin = new Button("Entrar");
+		botonLogin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				char[] contraseña = contraseñaLogin.getPassword();
+				String clave = new String(contraseña);
+				
+				if(ingreseUsuario.getText().equals("aaa") && clave.equals("777")) {
+				dispose();
+				JOptionPane.showMessageDialog(null, "Bienvenido");
+				
+				
+				
+				}else {
+				JOptionPane.showMessageDialog(null,"Usuario o contraseña incorrectos");
+			}
+			
+			
+			}
+			
+		});
 		botonLogin.setForeground(new Color(255, 255, 255));
 		botonLogin.setBackground(new Color(99, 67, 148));
 		botonLogin.setBounds(305, 244, 70, 22);
 		contentPane.add(botonLogin);
+		
+		Button botonRegistro = new Button("Registrarse");
+		botonRegistro.setForeground(Color.WHITE);
+		botonRegistro.setBackground(new Color(99, 67, 148));
+		botonRegistro.setBounds(305, 274, 70, 22);
+		contentPane.add(botonRegistro);
+		
+		contraseñaLogin = new JPasswordField();
+		contraseñaLogin.setBounds(264, 214, 160, 20);
+		contentPane.add(contraseñaLogin);
+		
+		
+		
+		
+		
 	}
 }
