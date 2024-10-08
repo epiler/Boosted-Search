@@ -21,8 +21,9 @@ import javax.swing.JSeparator;
 import java.awt.Button;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JButton;
 
-public class PruebaSwing extends JFrame {
+public class LoginCliente extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -37,7 +38,7 @@ public class PruebaSwing extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					PruebaSwing frame = new PruebaSwing();
+					LoginCliente frame = new LoginCliente();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -49,7 +50,7 @@ public class PruebaSwing extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public PruebaSwing() {
+	public LoginCliente() {
 		setResizable(false);
 		setTitle("Boosted Search");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -77,9 +78,24 @@ public class PruebaSwing extends JFrame {
 		NombreEmpresa.setBounds(40, 210, 117, 24);
 		panel.add(NombreEmpresa);
 		
-		JLabel tituloLogin = new JLabel("Login");
+		JButton botonVolver = new JButton("Volver");
+		botonVolver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				Roles Rol = new Roles(); 
+				Rol.setVisible(true);
+				dispose();
+				
+				
+				
+			}
+		});
+		botonVolver.setBounds(52, 11, 89, 23);
+		panel.add(botonVolver);
+		
+		JLabel tituloLogin = new JLabel("Login clientes");
 		tituloLogin.setFont(new Font("Yu Gothic", Font.BOLD, 21));
-		tituloLogin.setBounds(314, 52, 58, 31);
+		tituloLogin.setBounds(265, 53, 142, 31);
 		contentPane.add(tituloLogin);
 		
 		JLabel usuario = new JLabel("USUARIO");
@@ -134,7 +150,7 @@ public class PruebaSwing extends JFrame {
 		contentPane.add(botonRegistro);
 		
 		contraseñaLogin = new JPasswordField();
-		contraseñaLogin.setBounds(264, 214, 160, 20);
+		contraseñaLogin.setBounds(264, 201, 160, 20);
 		contentPane.add(contraseñaLogin);
 		
 		
